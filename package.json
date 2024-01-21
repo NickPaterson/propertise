@@ -12,11 +12,21 @@
     "build:digitalocean": "npm install --production=false && npm run build && npm ci"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/pro-regular-svg-icons": "^6.5.1",
+    "@fortawesome/pro-solid-svg-icons": "^6.5.1",
+    "@fortawesome/pro-thin-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@prisma/client": "^5.8.1",
     "@remix-run/css-bundle": "^2.5.0",
     "@remix-run/node": "^2.5.0",
     "@remix-run/react": "^2.5.0",
     "@remix-run/serve": "^2.5.0",
+    "dotenv": "^16.3.1",
     "isbot": "^4.1.0",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -32,6 +42,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "prisma": "^5.8.1",
     "typescript": "^5.1.6"
   },
   "engines": {

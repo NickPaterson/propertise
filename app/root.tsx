@@ -11,6 +11,7 @@ import {
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  { rel: "stylesheet", href: "styles/core.css"}
 ];
 
 export default function App() {
