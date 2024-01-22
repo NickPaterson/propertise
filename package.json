@@ -10,7 +10,7 @@
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc",
-    "build:digitalocean": "npm run preinstall && npm install --production=false && npm run build && npm ci"
+    "build:digitalocean": "node create-npmrc.js && npm install --production=false && npm run build && npm ci"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
