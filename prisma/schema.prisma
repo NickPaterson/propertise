@@ -11,9 +11,129 @@ datasource db {
 }
 
 model User {
-  id        String  @id @map("_id") @default(auto()) @db.ObjectId
-  email     String  @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String    @id @map("_id") @default(auto()) @db.ObjectId
+  email       String    @unique
+  password    String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  bookmarked  Bookmark[]
+}
+
+type Bookmark {
+  propertyId    String       @db.ObjectId
+  createdAt     DateTime     @default(now())
+}
+
+model Property {
+  id                    String @id @map("_id") @default(auto()) @db.ObjectId
+ address                Address
+  downloads             Download
+  estateAgent           EstateAgent          @map("estate-agent")
+  keyFeatures           String[]             @map("key-features")
+  media                 Media
+  nearby                Nearby[]
+  priceInformation      PriceInformation     @map("price-information")
+  propertyInformation   PropertyInformation  @map("property-information")
+}
+
+type Address {
+  line1       String       @map("line-1")
+  line2       String       @map("line-2")
+  city        String
+  state       String
+  postcode    String
+  coordinates Coordinates
+}
+
+type Coordinates {
+  latitude  Float
+  longitude Float
+}
+
+type Download {
+  homeReport     Document   @map("home-report")
+  epcCertificate Document   @map("epc-certificate")
+  brochures      Document[]
+}
+
+type Document {
+  url     String
+  caption String
+}
+
+type EstateAgent {
+  name          String
+  branch        String
+  address       Address
+  phone         String
+  email         String
+  website       String
+  logo          Document
+}
+
+type Media {
+  images       Document[]
+  videos       Document[]
+  floorplans   Document[]
+  virtualTours Document[] @map("virtual-tours")
+  thumbnail    Document
+}
+
+type Nearby {
+  amenities Amenity[]
+  schools   School[]
+}
+
+type Amenity {
+  name     String
+  distance Float
+}
+
+type School {
+  name     String
+  distance Float
+  rating   Float
+}
+
+type PriceInformation {
+  price       Float
+  priceOption String
+}
+
+type PropertyInformation {
+  roomDimensions        RoomDimension[] @map("room-dimensions")
+  rooms                 Room
+  propertyType          String          @map("property-type")
+  councilTaxBand        String          @map("council-tax-band")
+  energyPerformance     EnergyPerformance
+  propertyHistory       String          @map("property-history")
+  propertyTenure        String          @map("property-tenure")
+  propertyAge           String          @map("property-age")
+  propertyCondition     String          @map("property-condition")
+  propertyKeyFeatures   String[]        @map("property-key-features")
+  propertyTags          String[]        @map("property-tags")
+  propertyStyle         String          @map("property-style")
+  additionalInformation String          @map("additional-information")
+  description           String
+  summary               String
+}
+
+type RoomDimension {
+  name   String
+  width  Float
+  length Float
+  units  String
+}
+
+type Room {
+  receptionRooms Int
+  bathrooms      Int
+  bedrooms       Int
+}
+
+type EnergyPerformance {
+  currentRating               String @map("current-rating")
+  potentialRating             String @map("potential-rating")
+  currentEnvironmentalRating  String @map("current-environmental-rating")
+  potentialEnvironmentalRating String @map("potential-environmental-rating")
 }
