@@ -124,7 +124,7 @@ main {
     margin: .5em 0;
 }
 
-.aside-search .icon {
+form .icon {
     position: absolute;
     padding: 14px 10px;
     max-width: 15px;
@@ -146,3 +146,26 @@ button {
     height: 35px;
     box-shadow: var(--bs-light);
 }
+
+form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+form label {
+    margin: 1em 0 0 0;
+    font-weight: var(--fw-bold);
+}
+form input {
+    margin: .5em 0 0 0;
+    background: var(--clr-accent-light);
+    height: 35px;
+    border: none;
+    border-radius: 35px;
+    box-shadow: var(--bs-inset);
+    padding: 0 2.5em;
+}
+.login-form {
+    width: 500px;
+}
+
