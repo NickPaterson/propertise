@@ -3,8 +3,6 @@ import { prisma } from './prisma.server';
 import type { RegisterForm, LoginForm } from './types.server';
 import { createUser } from './user.server';
 import bcrypt from 'bcryptjs';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const secret = process.env.SESSION_SECRET
 if (!secret) {
