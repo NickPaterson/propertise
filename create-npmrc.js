@@ -1,5 +1,6 @@
 import fs from 'fs';
 import process from 'process';
+console.log("Creating .npmrc file");
 
 const fontAwesomeToken = process.env.FONTAWESOME_NPM_TOKEN;
 console.log("Creating .npmrc with FONTAWESOME_NPM_TOKEN:", fontAwesomeToken);
