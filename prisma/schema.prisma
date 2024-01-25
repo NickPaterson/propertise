@@ -17,8 +17,12 @@ model User {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   bookmarked  Bookmark[]
+  profile     Profile
 }
-
+type Profile {
+  firstName   String
+  lastName    String
+}
 type Bookmark {
   propertyId    String       @db.ObjectId
   createdAt     DateTime     @default(now())

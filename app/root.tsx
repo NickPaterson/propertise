@@ -11,8 +11,10 @@ import {
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-  { rel: "stylesheet", href: "styles/core.css"}
+  { rel: "stylesheet", href: "styles/core.css"},
+  { rel: "stylesheet", href: "styles/resets.css"}
 ];
+
 
 export default function App() {
   return (
@@ -20,6 +22,7 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Propertise</title>
         <Meta />
         <Links />
       </head>

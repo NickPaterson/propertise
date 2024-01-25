@@ -1,4 +1,4 @@
-import InputDropdown from './inputdropdown';
+import FormField from '~/components/form-field';
 import { faLocationDot, faHouse, faCircleSterling, faBed, faSort } from '@fortawesome/pro-solid-svg-icons';
 import { faSliders } from '@fortawesome/pro-regular-svg-icons';
 import { faCircleDashed } from '@fortawesome/pro-thin-svg-icons';
@@ -6,42 +6,56 @@ export function AsideSearch() {
     return (
         <aside className="aside-search">
             <form>
-               <InputDropdown 
-                    icon={faLocationDot} 
-                    placeholder={'Paisley, Scotland'} 
-                    classname={''} 
+                <FormField 
+                    value='1'
+                    icon={faLocationDot}
+                    type='select'
+                    htmlFor='location'
+                    options={['Paisley, Scotland', 'Glasgow, Scotland']}
                 />
-                <InputDropdown 
-                    icon={faCircleDashed}
-                    placeholder={'Radius'}
-                    classname={''}
+                <FormField 
+                    value='0'icon={faCircleDashed}
+                    type='select'
+                    htmlFor='radius'
+                    options={['Radius', '1 mile', '2 miles', '5 miles']}
                 />
-                <InputDropdown 
+                <FormField 
+                    value='0'
                     icon={faHouse}
-                    placeholder={'Property Type'}
-                    classname={''}
+                    type='select'
+                    htmlFor='type'
+                    options={['Property Type', 'House', 'Flat', 'Land']}
                 />
-                <InputDropdown 
+                <FormField 
+                    value='0'
                     icon={faCircleSterling}
-                    placeholder={'Price Range'}
-                    classname={''}
+                    type='select'
+                    htmlFor='price'
+                    options={['Price Range', '£0 - £50,000', '£50,001 - £100,000', '£100,001 - £250,000']}
                 />
-                <InputDropdown 
+                <FormField 
+                    value='0'
                     icon={faBed}
-                    placeholder={'Bedrooms'}
-                    classname={''}
+                    type='select'
+                    htmlFor='bedrooms'
+                    options={['Bedrooms', '1', '2', '3']}
                 />
-                <InputDropdown 
+                <FormField 
+                    value='0'
                     icon={faSliders}
-                    placeholder={'Filters'}
-                    classname={''}
+                    type='select'
+                    htmlFor='filters'
+                    options={['Filters']}
                 />
-                <InputDropdown 
+                <FormField 
+                    value='0'
                     icon={faSort}
-                    placeholder={'Sort'}
-                    classname={''}
+                    type='select'
+                    htmlFor='sort'
+                    options={['Sort']}
                 />
-                <button>Search</button>
+                
+                <button type='submit' className='accent-btn'>Search</button>
             </form>
         </aside>
     )
