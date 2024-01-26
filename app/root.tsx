@@ -12,7 +12,9 @@ import {
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: "styles/core.css"},
-  { rel: "stylesheet", href: "styles/resets.css"}
+  { rel: "stylesheet", href: "styles/resets.css"},
+  { rel: "stylesheet", href: "styles/nav.css"},
+  { rel: "stylesheet", href: "styles/propertise-logo-svg.css"}
 ];
 
 
