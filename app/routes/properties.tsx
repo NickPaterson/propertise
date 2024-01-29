@@ -114,7 +114,12 @@ export default function Properties() {
         },
         "propertyInformation": {
             "rooms": [
-                { "name": "Bedroom", "dimensions": {"width": 3.0, "length": 4.0, "area": 12.0}, "description": "Double bedroom" },
+                { 
+                    "name": "Bedroom", 
+                    "dimensions": {"width": 3.0, "length": 4.0, "area": 12.0}, 
+                    "features": ["Feature 1", "Feature 2", "Feature 3"],
+                    "description": "Double bedroom" 
+                },
                 
                 
             ],
@@ -158,7 +163,7 @@ export default function Properties() {
                 {/* {properties && properties.map(property => (
                     <PropertyCard key={property.id} property={property} />
                 ))} */}
-                <PropertyCard property={hardCodedProperty} propertyCardType="property-card-list" />
+                <PropertyCard property={hardCodedProperty} />
             </div>
                 
         
