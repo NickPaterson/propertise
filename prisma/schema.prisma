@@ -30,7 +30,8 @@ type Bookmark {
 
 model Property {
   id                    String @id @map("_id") @default(auto()) @db.ObjectId
- address                Address
+  title                 String
+  address               Address
   downloads             Download
   estateAgent           EstateAgent          @map("estate-agent")
   keyFeatures           String[]             @map("key-features")
@@ -66,13 +67,15 @@ type Document {
 }
 
 type EstateAgent {
-  name          String
-  branch        String
-  address       Address
-  phone         String
-  email         String
-  website       String
-  logo          Document
+  name            String
+  branch          String
+  address         Address
+  phone           String
+  email           String
+  website         String
+  logo            Document
+  backgroundColor String @map("background-color")
+  textColor       String @map("text-color")
 }
 
 type Media {
@@ -105,8 +108,7 @@ type PriceInformation {
 }
 
 type PropertyInformation {
-  roomDimensions        RoomDimension[] @map("room-dimensions")
-  rooms                 Room
+  rooms                 Room[]
   propertyType          String          @map("property-type")
   councilTaxBand        String          @map("council-tax-band")
   energyPerformance     EnergyPerformance
@@ -120,19 +122,20 @@ type PropertyInformation {
   additionalInformation String          @map("additional-information")
   description           String
   summary               String
+  floorArea             Dimension       @map("floor-area")
 }
 
-type RoomDimension {
-  name   String
+type Dimension {
   width  Float
   length Float
-  units  String
+  area   Float
 }
 
 type Room {
-  receptionRooms Int
-  bathrooms      Int
-  bedrooms       Int
+  name        String
+  dimensions  Dimension[]
+  features    String[]
+  description String
 }
 
 type EnergyPerformance {

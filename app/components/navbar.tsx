@@ -45,7 +45,7 @@ const NavBar: React.FC = () => {
       </ul>
 
       <div className='nav-end'>
-        <button onClick={toggleSearch}>
+        <button  onClick={toggleSearch}>
             { isSearchOpen 
                 ? <FontAwesomeIcon icon={faXmark} />
                 : <FontAwesomeIcon icon={faMagnifyingGlass} /> 

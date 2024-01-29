@@ -104,7 +104,7 @@ export async function getUser(request: Request) {
     try {
         const user = await prisma.user.findUnique({
             where: { id: userId },
-            select: { id: true, email: true, profile: true },
+            select: { id: true, email: true, profile: true, bookmarked: true},
         });
         return user;
     } catch {
@@ -114,7 +114,7 @@ export async function getUser(request: Request) {
 
 export async function logout(request: Request) {
     const session = await getUserSession(request);
-    return redirect("/login", {
+    return redirect("/", {
         headers: {
             "Set-Cookie": await storage.destroySession(session),
         },
