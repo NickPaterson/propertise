@@ -133,7 +133,7 @@ type Dimension {
 
 type Room {
   name        String
-  dimensions  Dimension[]
+  dimensions  Dimension
   features    String[]
   description String
 }

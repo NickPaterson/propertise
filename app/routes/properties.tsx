@@ -1,5 +1,5 @@
 import { LoaderFunction, json } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
+// import { useLoaderData } from '@remix-run/react';
 import { PropertyCard } from '../components/property-card';
 import { getProperties } from "~/utils/properties.server";
 import { ButtonSwitch } from '../components/button-switch';
@@ -15,51 +15,48 @@ export const loader: LoaderFunction = async () => {
 
 export default function Properties() {
     const icons: IconDefinition[] = [faList, faGrid2, faLocationDot];
-    const { properties } = useLoaderData<typeof loader>();
+    // const { properties } = useLoaderData<typeof loader>();
     const hardCodedProperty = {
         "id": "1",
         "title": "1 bed flat for sale",
         "address": {
             "line1": "Flat 1, 1-3",
-            "line2": "Lambeth High Street",
-            "city": "London",
-            "postcode": "SE1 7JN"
+            "line2": "Glasgow Street",
+            "city": "Glasgow",
+            "state": "Glasgow",
+            "postcode": "G1 1XX",
+            "coordinates": {
+                "latitude": 55.8617,
+                "longitude": -4.2526
+            }
         },
-        "media": {
-            "images": [
-                { "url": "http://via.placeholder.com/300x205", "caption": "Image 1" },
-                { "url": "https://media.rightmove.co.uk/dir/crop/10:9-16:9/loc/1011/915_1432_IMG_01_0000_max_476x317.jpg", "caption": "Image 2" },
-                { "url": "https://media.rightmove.co.uk/dir/crop/10:9-16:9/loc/1011/915_1432_IMG_02_0000_max_476x317.jpg", "caption": "Image 3" },
-                { "url": "https://media.rightmove.co.uk/dir/crop/10:9-16:9/loc/1011/915_1432_IMG_03_0000_max_476x317.jpg", "caption": "Image 4" },
-                { "url": "https://media.rightmove.co.uk/dir/crop/10:9-16:9/loc/1011/915_1432_IMG_04_0000_max_476x317.jpg", "caption": "Image 5" },
-                { "url": "https://media.rightmove.co.uk/dir/crop/10:9-16:9/loc/1011/915_1432_IMG_05_0000_max_476x317.jpg", "caption": "Image 6" },
-                { "url": "https://media.rightmove.co.uk/dir/crop/10:9-16:9/loc/1011/915_1432_IMG_06_0000_max_476x317.jpg", "caption": "Image 7" }
+        "downloads": {
+            "homeReport": {
+                "url": "",
+                "caption": "Home report"
+            },
+            "epcCertificate": {
+                "url": "",
+                "caption": "EPC certificate"
+            },
+            "brochures": [
+                { "url": "", "caption": "Brochure 1" },
+                { "url": "", "caption": "Brochure 2" }
             ],
-            "videos": [
-                { "url": "https://www.youtube.com/watch?v=ZQDJuQr4XRg", "caption": "Video 1" },
-                { "url": "https://www.youtube.com/watch?v=ZQDJuQr4XRg", "caption": "Video 2" },
-                { "url": "https://www.youtube.com/watch?v=ZQDJuQr4XRg", "caption": "Video 3" }
-            ]
-        },
-        "priceInformation": {
-            "price": "500,000",
-            "priceOption": "Guide price"
-        },
-        "propertyInformation": {
-            "summary": "A stunning 1 bedroom flat situated on the 1st floor of a modern development with lift and boasting bright and spacious interiors throughout and a lovely private Balcony.",
-            "rooms": [
-                { "name": "3", "description": "Double bedroom" },
-                { "name": "1", "description": "1 bathroom" },
-                { "name": "1", "description": "1 reception room" }
-            ]
         },
         "estateAgent": {
             "name": "Estate Agent Name",
+            "branch": "Branch name",
             "address": {
-                "line1": "Foxtons London Bridge",
-                "line2": "1-2 Mill Street",
-                "city": "London",
-                "postcode": "SE1 2BD"
+                "line1": "123 Main Street",
+                "line2": "Glasgow",
+                "city": "Glasgow",
+                "state": "Glasgow",
+                "postcode": "G1 1XX",
+                "coordinates": {
+                    "latitude": 55.8617,
+                    "longitude": -4.2526
+                },
             },
             "phone": "020 7386 6500",
             "email": "",
@@ -68,19 +65,100 @@ export default function Properties() {
             "textColor": "#000000",
             "logo": {
                 "url": "/estate-agent-placeholder-logo.png",
-                "caption": "Estate agent logo",
+                "caption": "Estate agent logo"
+            }
+        },
+        "keyFeatures": [
+            "Key feature 1",
+            "Key feature 2",
+            "Key feature 3"
+        ],
+        "media": {
+            "images": [
+                { "url": "http://via.placeholder.com/300x205", "caption": "Image 1" },
+                // ... more images ...
+            ],
+            "videos": [
+                { "url": "https://www.youtube.com/watch?v=ZQDJuQr4XRg", "caption": "Video 1" },
+                // ... more videos ...
+            ],
+            "floorplans": [
+                { "url": "http://via.placeholder.com/300x205", "caption": "Floorplan 1" },
+                // ... more floorplans ...
+            ],
+            "virtualTours": [
+                { "url": "https://www.youtube.com/watch?v=ZQDJuQr4XRg", "caption": "Virtual tour 1" },
+                // ... more virtual tours ...
+            ],
+            "thumbnail": {
+                "url": "http://via.placeholder.com/300x205",
+                "caption": "Thumbnail"
             },
-
+        },
+        "nearby": [
+            {
+                "amenities": [
+                    { "name": "Amenity 1", "distance": 0.5 },
+                    // ... more amenities ...
+                ],
+                "schools": [
+                    { "name": "School 1", "distance": 0.6, "rating": 8.0 },
+                    // ... more schools ...
+                ]
+            }
+            // ... more nearby entries if needed ...
+        ],
+        "priceInformation": {
+            "price": 500000.00, // Make sure this is a number
+            "priceOption": "Guide price"
+        },
+        "propertyInformation": {
+            "rooms": [
+                { "name": "Bedroom", "dimensions": {"width": 3.0, "length": 4.0, "area": 12.0}, "description": "Double bedroom" },
+                
+                
+            ],
+            "propertyType": "Flat",
+            "councilTaxBand": "Band C",
+            "energyPerformance": {
+                "currentRating": "C",
+                "potentialRating": "B",
+                "currentEnvironmentalRating": "C",
+                "potentialEnvironmentalRating": "B"
+            },
+            "propertyHistory": "",
+            "propertyTenure": "Freehold",
+            "propertyAge": "New build",
+            "propertyCondition": "Excellent",
+            "propertyKeyFeatures": [
+                "Key feature 1",
+                "Key feature 2",
+                "Key feature 3"
+            ],
+            "propertyTags": [
+                "Tag 1",
+                "Tag 2",
+                "Tag 3"
+            ],
+            "propertyStyle": "Flat",
+            "additionalInformation": "Additional information",
+            "summary": "A stunning 1 bedroom flat...",
+            "floorArea": {
+                "width": 60.0, // Assuming this is the total width of the floor
+                "length": 100.0, // Assuming this is the total length of the floor
+                "area": 6000.0 // Assuming this is the total area in square meters
+            },
+            "description": "A stunning 1 bedroom flat situated on the 1st floor of a modern development with lift and boasting bright and spacious interiors throughout and a lovely private Balcony."
         }
     };
     return (
         <div>
             <ButtonSwitch icons={icons} />
             <div className='property-list'>
-                {properties.map(property => (
+                {/* {properties && properties.map(property => (
                     <PropertyCard key={property.id} property={property} />
-                ))}
-                <PropertyCard property={hardCodedProperty} />
+                ))} */}
+                <PropertyCard property={hardCodedProperty} propertyCardType="property-card-list" />
             </div>
                 
         

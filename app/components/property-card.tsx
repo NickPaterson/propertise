@@ -4,7 +4,7 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faBed, faBath, faToilet, faRulerCombined, faLayerGroup } from '@fortawesome/pro-regular-svg-icons';
 import { faPhone, faEnvelope, faImage, faFilm, faBookmark,faGlobePointer } from '@fortawesome/pro-solid-svg-icons';
 import { ButtonSwitch } from '../components/button-switch';
-import { Link } from 'react-router-dom';
+
 interface props {
     property: Property;
 }
