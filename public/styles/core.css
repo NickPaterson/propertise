@@ -323,20 +323,20 @@ form select {
     position: relative;
     top: -50px;
     display: grid;
-    grid-template-areas: "image info" "agent agent";
+    grid-template-areas: "info" "agent";
 }
 .property-card__info {
-    grid-area: info;
-    padding: 1em 1em 1em 120px;
+    display: grid;
+    grid-template-areas: "image title" "image address" "image summary" "image icons";
+    grid-template-columns: 300px auto;
     max-height: 205px;
     z-index: 2;
     background: var(--clr-accent-light);
     box-shadow: var(--bs-inset);
-    border-radius: 0 30px 30px 0;
-    width: calc(100% + 100px);
-    margin-left: -100px;
+    border-radius: 30px;
     order: -1;
 }
+
 .property-card__agent {
     grid-area: agent;
     padding: 1em;
@@ -347,6 +347,7 @@ form select {
     left: 30px;
 }
 .property-card__image {
+    grid-area: image;
     position: relative;
     top: 0;
     left: 0;
@@ -359,24 +360,32 @@ form select {
     box-shadow: var(--bs-heavy);
 }
 .property-card__title {
+    grid-area: title;
     font-size: var(--fs-h3);
+    margin-top: 1rem ;
+    padding: 0 1rem;
 }
 .property-card__address {
+    grid-area: address;
     font-size: var(--fs-small);
     font-weight: var(--fw-bold);
     margin: 10px 0;
+    padding: 0 1rem;
 }
 .property-card__summary {
+    grid-area: summary;
     height: 64px;
     overflow: hidden;
     font-size: var(--fs-small);
+    padding: 0 1rem;
 }
 .property-card__icons {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 350px;
-    margin-top: 10px;
+    margin: 10px 0;
+    padding: 0 1rem;
 }
 .property-card__icon {
     display: flex;
@@ -433,6 +442,34 @@ form select {
     box-shadow: var(--bs-heavy);
 }
 
+.property-card__bookmark {
+    position: absolute;
+    top: -10px;
+    right: 50px;
+    width: 50px;
+    padding: 0;
+}
+
+.property-card__bookmark button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: var(--clr-accent-light);
+    box-shadow: var(--bs-inset);
+}
+
+.property-card__bookmark svg {
+    max-width: 25px;
+    max-height: 25px;
+    color: var(--clr-dark);
+}
+
+.bookmark-button-solid svg {
+    color: var(--clr-accent);
+}
 
 .property-card__agent {
     display: flex;

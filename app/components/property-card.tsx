@@ -1,8 +1,8 @@
 import { Property } from '@prisma/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faBed, faBath, faToilet, faRulerCombined, faLayerGroup } from '@fortawesome/pro-regular-svg-icons';
-import { faPhone, faEnvelope, faImage, faFilm, faBookmark,faGlobePointer } from '@fortawesome/pro-solid-svg-icons';
+import { faBed, faBath, faRulerCombined, faLayerGroup, faCouch, faBookmark } from '@fortawesome/pro-regular-svg-icons';
+import { faPhone, faEnvelope, faImage, faFilm,faGlobePointer, faBookmark as faBookmarkSolid} from '@fortawesome/pro-solid-svg-icons';
 import { ButtonSwitch } from '../components/button-switch';
 
 interface props {
@@ -20,29 +20,33 @@ export function PropertyCard({ property }: props, propertyCardType: string = 'pr
         <div className={`property-card ${propertyCardType}`}>
             <ButtonSwitch icons={icons} />
             <div className='property-card__content'>
-                <div className="property-card__image">
-                    <img src={media.images[0].url} alt={media.images[0].caption} />
-                </div>
+                
                 <div className='property-card__info'>
+                    <div className="property-card__image">
+                        <img src={media.images[0].url} alt={media.images[0].caption} />
+                    </div>
                     <h2 className='property-card__title'>{title}</h2>
                     <p className='property-card__address'>{address.line1} {address.line2} {address.city}</p>
                     <p className='property-card__summary'>{propertyInformation.summary}</p>
                     <div className='property-card__icons'>
                         <div className='property-card__icon'>
                             <FontAwesomeIcon icon={faBed} />
-                            <span>{propertyInformation.rooms[0].name}</span>
+                            <span>{propertyInformation.bedroomCount}</span>
                         </div>
                         <div className='property-card__icon'>
                             <FontAwesomeIcon icon={faBath} />
-                            <span>{propertyInformation.rooms[1].name}</span>
+                            <span>{propertyInformation.bathroomCount}</span>
                         </div>
                         <div className='property-card__icon'>
-                            <FontAwesomeIcon icon={faToilet} />
-                            <span>{propertyInformation.rooms[2].name}</span>
+                            <FontAwesomeIcon icon={faCouch} />
+                            <span>{propertyInformation.receptionRoomCount}</span>
                         </div>
                         <div className='property-card__icon'>
                             <FontAwesomeIcon icon={faRulerCombined} />
-                            <span>60m<sup>2</sup></span>
+                            <span>
+                                {propertyInformation.floorArea.area}
+                                m<sup>2</sup>
+                            </span>
                         </div>
                     </div>
                     <div className='property-card__price'>
@@ -51,6 +55,8 @@ export function PropertyCard({ property }: props, propertyCardType: string = 'pr
                     </div>
                     <div className='property-card__bookmark'>
                         <button className='bookmark-button'><FontAwesomeIcon icon={faBookmark} /></button>
+                        <button className='bookmark-button bookmark-button-solid'><FontAwesomeIcon icon={faBookmarkSolid} /></button>
+
                     </div>
                 </div>
                 <div 
@@ -59,7 +65,7 @@ export function PropertyCard({ property }: props, propertyCardType: string = 'pr
                     <img src={estateAgent.logo.url} alt={estateAgent.logo.caption} />
                     <p className='property-card__agent-call'><FontAwesomeIcon icon={faPhone} /> Call Agent</p>
                     <p className='property-card__agent-email'><FontAwesomeIcon icon={faEnvelope} />Email Agent</p>
-                    <p className='property-card__agent-email'><FontAwesomeIcon icon={faGlobePointer} />Website</p>
+                    <p className='property-card__agent-website'><FontAwesomeIcon icon={faGlobePointer} />Website</p>
 
                 </div>
             </div>

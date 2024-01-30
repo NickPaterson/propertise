@@ -1,21 +1,21 @@
-import { LoaderFunction, json } from '@remix-run/node';
+//import { LoaderFunction, json } from '@remix-run/node';
 // import { useLoaderData } from '@remix-run/react';
 import { PropertyCard } from '../components/property-card';
-import { getProperties } from "~/utils/properties.server";
+//import { getProperties } from "~/utils/properties.server";
 import { ButtonSwitch } from '../components/button-switch';
 
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faList } from "@fortawesome/pro-regular-svg-icons";
 import { faGrid2, faLocationDot } from "@fortawesome/pro-solid-svg-icons";
 
-export const loader: LoaderFunction = async () => {
-    const properties = await getProperties();
-    return json({ properties });
-}
+// export const loader: LoaderFunction = async () => {
+//     const properties = await getProperties();
+//     return json({ properties });
+// }
 
 export default function Properties() {
     const icons: IconDefinition[] = [faList, faGrid2, faLocationDot];
-    // const { properties } = useLoaderData<typeof loader>();
+    //const { properties } = useLoaderData<typeof loader>();
     const hardCodedProperty = {
         "id": "1",
         "title": "1 bed flat for sale",
@@ -109,7 +109,7 @@ export default function Properties() {
             // ... more nearby entries if needed ...
         ],
         "priceInformation": {
-            "price": 500000.00, // Make sure this is a number
+            "price": 500000.00, 
             "priceOption": "Guide price"
         },
         "propertyInformation": {
@@ -123,6 +123,9 @@ export default function Properties() {
                 
                 
             ],
+            "bedroomCount": 3,
+            "bathroomCount": 2,
+            "receptionRoomCount": 1,
             "propertyType": "Flat",
             "councilTaxBand": "Band C",
             "energyPerformance": {

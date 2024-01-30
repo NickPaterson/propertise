@@ -66,6 +66,7 @@ type Document {
   caption String
 }
 
+// TODO: Change to Model, and add a relationship to Property
 type EstateAgent {
   name            String
   branch          String
@@ -109,6 +110,9 @@ type PriceInformation {
 
 type PropertyInformation {
   rooms                 Room[]
+  bedroomCount          Int             @map("bedroom-count")
+  bathroomCount         Int             @map("bathroom-count")
+  receptionRoomCount    Int             @map("reception-room-count")
   propertyType          String          @map("property-type")
   councilTaxBand        String          @map("council-tax-band")
   energyPerformance     EnergyPerformance
