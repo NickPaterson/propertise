@@ -5,13 +5,13 @@
     width: 100vw;
     height: 60px;
     padding: 0 20px 0 70px;
-    background: var(--bg-gradient-light);
+    background: var(--bg);
     box-shadow: var(--bs);
     z-index: 100;
 }
 
 body.dark .nav {
-    background: var(--bg-gradient-darkmode-dark);
+    background: var(--bg-dark);
     color: var(--clr-light);
 }
 
@@ -239,4 +239,36 @@ body.dark .theme-toggler {
 
 body.dark .theme-toggler:after {
     left: 19px;
+}
+
+/* ============ */
+/* ASIDE SEARCH */
+/* ============ */
+
+body.dark .aside-search {
+    background: var(--bg-dark);
+}
+
+.aside-search {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    height: calc(100vh - 60px);
+    padding: 1em;
+    background: var(--bg);
+    box-shadow: var(--bs-left);
+    transition: all 0.3s ease-in-out;
+    z-index: 99;
+}
+
+@media (min-width: 1150px) {
+    .aside-search {
+        position: relative;
+        width: 260px;
+        background: var(--bg-gradient-light);
+        box-shadow: var(--bs-heavy);
+        border-radius: 1em 0 0 0;
+        top: 0;
+        margin: 0 0 0 .5em;
+    }
 }

@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/pro-solid-svg-icons';
 import { faBars, faCircleXmark, faXmark } from '@fortawesome/pro-regular-svg-icons';
 import Logo from './propertise-logo';
 
-const NavBar: React.FC = () => {
+interface NavBarProps {
+    toggleSearch: () => void;
+    isSearchOpen: boolean;
+}
+const NavBar = (props: NavBarProps) => {
+    const { toggleSearch, isSearchOpen } = props;
+
     const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
-    const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+    
   
     const handleThemeToggle = () => {
         document.body.classList.toggle("dark");
     }
-    const toggleSearch = (): void => {
-      setIsSearchOpen(!isSearchOpen);
-      if (isNavOpen) setIsNavOpen(false);
-    };
+    
   
     const openNav = (): void => {
       setIsNavOpen(true);
-      if (isSearchOpen) setIsSearchOpen(false);
     };
   
     const closeNav = (): void => {
@@ -27,7 +29,7 @@ const NavBar: React.FC = () => {
     };
   
 
-  return (
+  return <>
     <nav className={`nav ${isSearchOpen ? 'openSearch' : ''} ${isNavOpen ? 'openNav' : ''}`}>
       <button className="navOpenBtn" onClick={openNav}><FontAwesomeIcon icon={faBars} /></button>
       
@@ -45,15 +47,13 @@ const NavBar: React.FC = () => {
       </ul>
 
       <div className='nav-end'>
-        <button  onClick={toggleSearch}>
+        <button onClick={toggleSearch}>
             { isSearchOpen 
                 ? <FontAwesomeIcon icon={faXmark} />
                 : <FontAwesomeIcon icon={faMagnifyingGlass} /> 
             }
         </button>
-        <div className="search-box">
-            <input type="text" placeholder="Search Properties" />
-        </div>
+        
         <div 
             id="themeToggler" 
             className="theme-toggler" 
@@ -69,7 +69,9 @@ const NavBar: React.FC = () => {
       </div>
       
     </nav>
-  );
+    
+    
+  </>;
 };
 
 export default NavBar;

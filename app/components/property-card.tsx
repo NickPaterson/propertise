@@ -1,4 +1,4 @@
-import { Property } from '@prisma/client';
+import { Property, EstateAgent } from '@prisma/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faBed, faBath, faRulerCombined, faLayerGroup, faCouch, faBookmark } from '@fortawesome/pro-regular-svg-icons';
@@ -7,10 +7,12 @@ import { ButtonSwitch } from '../components/button-switch';
 
 interface props {
     property: Property;
+    estateAgent: EstateAgent;
 }
 
-export function PropertyCard({ property }: props, propertyCardType: string = 'property-card-list') {
-    const { title, address, estateAgent, media, priceInformation, propertyInformation } = property;
+export function PropertyCard({ property, estateAgent }: props, propertyCardType: string = 'property-card-list') {
+    const { title, address, media, priceInformation, propertyInformation } = property;
+
     const icons: IconDefinition[] = [faImage, faFilm, faLayerGroup];
     const estateAgentDivStyle = {
         background: `${estateAgent.backgroundColor} !important`,

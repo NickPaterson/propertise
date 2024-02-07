@@ -2,7 +2,9 @@ import FormField from '~/components/form-field';
 import { faLocationDot, faHouse, faCircleSterling, faBed, faSort } from '@fortawesome/pro-solid-svg-icons';
 import { faSliders } from '@fortawesome/pro-regular-svg-icons';
 import { faCircleDashed } from '@fortawesome/pro-thin-svg-icons';
+
 export function AsideSearch() {
+    
     return (
         <aside className="aside-search">
             <form>

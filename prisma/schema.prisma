@@ -28,13 +28,32 @@ type Bookmark {
   createdAt     DateTime     @default(now())
 }
 
+model EstateAgent {
+  id              String    @id @map("_id") @default(auto()) @db.ObjectId
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  name            String
+  contactName     String[]  @map("contact-name")
+  branch          String
+  address         Address
+  phone           String
+  email           String
+  website         String
+  logo            Document
+  backgroundColor String @map("background-color")
+  textColor       String @map("text-color")
+  description     String
+  properties      Property[]
+}
+
 model Property {
   id                    String @id @map("_id") @default(auto()) @db.ObjectId
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
   title                 String
   address               Address
-  downloads             Download
-  estateAgent           EstateAgent          @map("estate-agent")
-  keyFeatures           String[]             @map("key-features")
+  downloads             Downloads
+  estateAgent           EstateAgent          @relation(fields: [id], references: [id])
   media                 Media
   nearby                Nearby[]
   priceInformation      PriceInformation     @map("price-information")
@@ -55,7 +74,7 @@ type Coordinates {
   longitude Float
 }
 
-type Download {
+type Downloads {
   homeReport     Document   @map("home-report")
   epcCertificate Document   @map("epc-certificate")
   brochures      Document[]
@@ -64,19 +83,6 @@ type Download {
 type Document {
   url     String
   caption String
-}
-
-// TODO: Change to Model, and add a relationship to Property
-type EstateAgent {
-  name            String
-  branch          String
-  address         Address
-  phone           String
-  email           String
-  website         String
-  logo            Document
-  backgroundColor String @map("background-color")
-  textColor       String @map("text-color")
 }
 
 type Media {
