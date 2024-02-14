@@ -7,6 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteError
 } from "@remix-run/react";
 
 import { Layout } from "~/components/layout"
@@ -19,6 +20,23 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: "styles/propertise-logo-svg.css"}
 ];
 
+export function ErrorBoundary() {
+  const error = useRouteError();
+  console.error(error);
+  return (
+    <html lang="en">
+      <head>
+        <title>Oh no!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <h1>Oh no!</h1>
+        <Scripts />
+      </body>
+    </html>
+  );
+}
 
 export default function App() {
   return (
