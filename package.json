@@ -10,8 +10,10 @@
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc",
-    "build:digitalocean": "npm install --production=false && npm run build && npm ci",
-    "prisma:seed": "node prisma\\seed.js"
+    "build:digitalocean": "npm install --production=false && npm run build && npm ci"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -30,12 +32,14 @@
     "isbot": "^4.1.0",
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.0",
+    "neo4j-driver": "^5.17.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.5.0",
     "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.11.16",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
@@ -47,7 +51,8 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prisma": "^5.8.1",
-    "typescript": "^5.1.6"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">=18.0.0"

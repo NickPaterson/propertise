@@ -2,11 +2,7 @@
 import { prisma } from './prisma.server';
 
 export const getProperties = async () => {
-    return await prisma.property.findMany({
-        include: {
-            estateAgent: true,
-        }
-    });
+    return await prisma.property.findMany();
 }
 
 export const getProperty = async (id: string) => {

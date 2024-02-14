@@ -16,24 +16,18 @@ model User {
   password    String
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  bookmarked  Bookmark[]
-  profile     Profile
 }
+
 type Profile {
   firstName   String
   lastName    String
-}
-type Bookmark {
-  propertyId    String       @db.ObjectId
-  createdAt     DateTime     @default(now())
+  phone       String
+  role        String
 }
 
-model EstateAgent {
-  id              String    @id @map("_id") @default(auto()) @db.ObjectId
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+type EstateAgent {
   name            String
-  contactName     String[]  @map("contact-name")
+  contactNames    String[]  @map("contact-names")
   branch          String
   address         Address
   phone           String
@@ -43,7 +37,6 @@ model EstateAgent {
   backgroundColor String @map("background-color")
   textColor       String @map("text-color")
   description     String
-  properties      Property[]
 }
 
 model Property {
@@ -53,11 +46,12 @@ model Property {
   title                 String
   address               Address
   downloads             Downloads
-  estateAgent           EstateAgent          @relation(fields: [id], references: [id])
+  estateAgent           EstateAgent          @map("estate-agent")
   media                 Media
   nearby                Nearby[]
   priceInformation      PriceInformation     @map("price-information")
   propertyInformation   PropertyInformation  @map("property-information")
+        
 }
 
 type Address {
@@ -94,20 +88,10 @@ type Media {
 }
 
 type Nearby {
-  amenities Amenity[]
-  schools   School[]
+  name      String
+  distance  Float
 }
 
-type Amenity {
-  name     String
-  distance Float
-}
-
-type School {
-  name     String
-  distance Float
-  rating   Float
-}
 
 type PriceInformation {
   price       Float
@@ -132,18 +116,12 @@ type PropertyInformation {
   additionalInformation String          @map("additional-information")
   description           String
   summary               String
-  floorArea             Dimension       @map("floor-area")
-}
-
-type Dimension {
-  width  Float
-  length Float
-  area   Float
+  floorArea             Float           @map("floor-area")
 }
 
 type Room {
   name        String
-  dimensions  Dimension
+  dimensions  String
   features    String[]
   description String
 }
